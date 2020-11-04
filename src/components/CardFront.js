@@ -21,7 +21,23 @@ const CardFront = (props) => {
     console.log("esayCount: ", esayCount)
   }
 
-  // console.log("EsayCount: ", esayCount)
+  // increment the Medium count
+  const mediumCountFunction = () => {
+    let mediumClick = mediumCount.medium + 1
+    setMediumCount({
+      medium: mediumClick
+    })
+    console.log("mediumCount: ", mediumCount)
+  }
+
+    // increment the Hard count
+  const hardCountFunction = () => {
+    let hardClick = hardCount.hard + 1
+    setHardCount({
+      hard: hardClick
+    })
+    console.log("mediumCount: ", mediumCount)
+  }
 
   const handleClick = (event) => {
     event.preventDefault();
