@@ -6,6 +6,22 @@ const CardFront = (props) => {
   console.log("props from CardFront: ", props);
 
   const [isFlipped, setisFlipped] = useState(false);
+  // set difficulty-level state
+  const [esayCount, setEsayCount] = useState({esay: 0})
+  const [mediumCount, setMediumCount] = useState({medium: 0})
+  const [hardCount, setHardCount] = useState({hard: 0})
+
+
+  // increment the Esay count
+  const esayCountFunction = () => {
+    let esayClick = esayCount.esay + 1
+    setEsayCount({
+      esay: esayClick
+    })
+    console.log("esayCount: ", esayCount)
+  }
+
+  // console.log("EsayCount: ", esayCount)
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -18,10 +34,9 @@ const CardFront = (props) => {
         {/* Front of Card */}
         <div className="card">
           <p> {props.question} </p>
-          <p> {props.easy} </p>
-          <p> {props.medium} </p>
-          <p> {props.hard} </p>
           <button onClick={(e) => handleClick(e)}> answer </button>
+          {/* difficulty Level Votes */}
+          <button onClick={(event) => esayCountFunction(event)}> Esay: {esayCount.esay} </button>
         </div>
         {/* Back of Card */}
         <div className="card">

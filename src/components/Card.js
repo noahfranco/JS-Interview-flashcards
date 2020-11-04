@@ -16,9 +16,6 @@ const Card = () => {
             key={cards.id}
             question={cards.question}
             answer={cards.answer}
-            easy={cards.easy}
-            medium={cards.medium}
-            hard={cards.hard}
           />
         ))}
       </div>
