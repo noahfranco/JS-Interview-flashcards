@@ -13,9 +13,10 @@ const Card = () => {
       <div>
         {card.map((cards) => (
           <CardFront
-            key={cards.id}
+            id={cards.id}
             question={cards.question}
             answer={cards.answer}
+            esay={cards.esay}
           />
         ))}
       </div>
