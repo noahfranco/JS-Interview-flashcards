@@ -34,7 +34,6 @@ const CardFront = (props) => {
     })
   }
   
-
   // increment the Medium state
   const mediumAddFunction = () => {
     let mediumClick = mediumCount.medium + 1
@@ -84,36 +83,55 @@ const CardFront = (props) => {
           <button onClick={(e) => handleClick(e)}> answer </button>
           {/* difficulty Level Votes */}
           <div className="addMargin">
-            <div clasName="addMargin"> 
-            { esayCount.esay === 0 ?
-            // if above is ture then execute below
-            <Label onClick={(event) => esayAddFunction(event)} as='a' color='teal'>
-              Esay: {esayCount.esay}
-            </Label> :
-            // otherwise execute below 
-             <Label onClick={(event) => esaySubFunction(event)} as='a' color='teal'>
-             Esay: {esayCount.esay}
-           </Label>             
+          <div clasName="addMargin">
+            { mediumCount.medium === 1 || hardCount.hard === 1 ?
+             // esay label tag is unclickable since other state is alrady filled 
+            <Label as='a' color='teal'>
+            Esay: {esayCount.esay}
+          </Label> : ( esayCount.esay === 0 ?
+          // if above is ture then execute below
+          <Label onClick={(event) => esayAddFunction(event)} as='a' color='teal'>
+          Esay: {esayCount.esay}
+          </Label> :
+            // subtrict one from esatCount object
+            <Label onClick={(event) => esaySubFunction(event)} as='a' color='teal'>
+            Esay: {esayCount.esay}
+          </Label>
+            ) 
             }
             </div> 
             <div className="addMargin">
-            { mediumCount.medium === 0 ? 
-            <Label onClick={(event) => mediumAddFunction(event)} as='a' color='yellow' tag>
+            { esayCount.esay === 1 || hardCount.hard === 1 ? 
+            // medium label tag is unclickable since other state is alrady filled 
+            <Label as='a' color='yellow' tag>
               Medium: {mediumCount.medium}
-            </Label> :
+            </Label> : (mediumCount.medium === 0 ?
+            // if above is ture then execute below
+            <Label onClick={(event) => mediumAddFunction(event)} as='a' color='yellow' tag>
+            Medium: {mediumCount.medium}
+          </Label> :
+            // subtrict one from esatCount object
             <Label onClick={(event) => mediumSubFunction(event)} as='a' color='yellow' tag>
               Medium: {mediumCount.medium}
             </Label>
+            )
             }
             </div> 
             <div className="addMargin">
-            { hardCount.hard === 0 ?
-            <Label onClick={(event) => hardAddFunction(event)} as='a' color='red' tag>
+            { esayCount.esay === 1 || mediumCount.medium === 1 ?
+            // medium label tag is unclickable since other state is alrady filled 
+            <Label  as='a' color='red' tag>
               Hard: {hardCount.hard}
-            </Label> :
+            </Label> : (hardCount.hard === 0 ?
+            // if above is ture then execute below
+            <Label onClick={(event) => hardAddFunction(event)} as='a' color='red' tag>
+            Hard: {hardCount.hard}
+          </Label> : 
+            // subtrict one from esatCount object
              <Label onClick={(event) => hardSubFunction(event)} as='a' color='red' tag>
              Hard: {hardCount.hard}
            </Label>
+             )
             }
             </div> 
           </div>
