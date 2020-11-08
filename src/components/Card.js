@@ -13,12 +13,10 @@ const Card = () => {
       <div>
         {card.map((cards) => (
           <CardFront
-            key={cards.id}
+            id={cards.id}
             question={cards.question}
             answer={cards.answer}
-            easy={cards.easy}
-            medium={cards.medium}
-            hard={cards.hard}
+            esay={cards.esay}
           />
         ))}
       </div>
