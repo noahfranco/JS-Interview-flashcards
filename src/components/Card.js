@@ -1,18 +1,13 @@
-import React, { useContext, useEffect } from "react";
-
-import GetCardContext from "../context/GetCardContext";
+import React, { useEffect } from "react";
 import CardFront from "./CardFront";
 import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
 import { connect } from "react-redux";
+import { FlashCardsGetReducer } from "../redux/reducers/FlashCardsGetReducer";
 
 
 const Card = (props) => {
-  // const { card } = useContext(GetCardContext);
+  // props is being passed down from actions
   console.log("props: ", props.card)
-
-useEffect(() => {
-  FlashCardsGetActions()
-}, [])
 
   return (
     <>
@@ -20,7 +15,7 @@ useEffect(() => {
       <div>
         {props.card.card.map((cards) => (
           <CardFront
-            id={cards.id}
+            key={cards.id}
             question={cards.question}
             answer={cards.answer}
             esay={cards.esay}

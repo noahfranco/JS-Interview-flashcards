@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import ReactCardFlip from "react-card-flip";
 import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import GetCardContext from "../context/GetCardContext"
 
 const CardFront = (props) => {
   // props is passing the card object from Card.js component
