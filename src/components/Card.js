@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import GetCardContext from "../context/GetCardContext";
 import CardFront from "./CardFront";
+import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
+import { connect } from "react-redux";
 
-const Card = () => {
-  const { card } = useContext(GetCardContext);
-  console.log("data coming from context wrap in App.js: ", card);
+
+const Card = (props) => {
+  // const { card } = useContext(GetCardContext);
+  console.log("props: ", props.card)
+
+useEffect(() => {
+  FlashCardsGetActions()
+}, [])
 
   return (
     <>
       {/* Mapping thorugh object */}
       <div>
-        {card.map((cards) => (
+        {props.card.card.map((cards) => (
           <CardFront
             id={cards.id}
             question={cards.question}
@@ -24,4 +31,7 @@ const Card = () => {
   );
 };
 
-export default Card;
+const mapStateToProps = state => {
+  return { card: state.card }}
+
+export default connect(mapStateToProps, FlashCardsGetActions)(Card);

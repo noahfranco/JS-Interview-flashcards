@@ -83,7 +83,7 @@ const CardFront = (props) => {
           <button onClick={(e) => handleClick(e)}> answer </button>
           {/* difficulty Level Votes */}
           <div className="addMargin">
-          <div clasName="addMargin">
+          <div className="addMargin">
             { mediumCount.medium === 1 || hardCount.hard === 1 ?
              // esay label tag is unclickable since other state is alrady filled 
             <Label as='a' color='teal'>
