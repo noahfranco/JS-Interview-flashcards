@@ -9,6 +9,11 @@ const Card = (props) => {
   // props is being passed down from actions
   console.log("props: ", props.card)
 
+
+  useEffect(() => {
+    props.FlashCardsGetActions()
+  }, [])
+
   return (
     <>
       {/* Mapping thorugh object */}
@@ -18,7 +23,7 @@ const Card = (props) => {
             key={cards.id}
             question={cards.question}
             answer={cards.answer}
-            esay={cards.esay}
+            esay={cards.esay}                                                                                   
           />
         ))}
       </div>
@@ -26,7 +31,9 @@ const Card = (props) => {
   );
 };
 
+const actionCall = { FlashCardsGetActions }
+
 const mapStateToProps = state => {
   return { card: state.card }}
 
-export default connect(mapStateToProps, FlashCardsGetActions)(Card);
+export default connect(mapStateToProps, actionCall)(Card);
