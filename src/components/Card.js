@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import CardFront from "./CardFront";
 import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
 import { connect } from "react-redux";
-import { FlashCardsGetReducer } from "../redux/reducers/FlashCardsGetReducer";
 
 
 const Card = (props) => {
   // props is being passed down from actions
-  console.log("props: ", props.card)
+  console.log("props: ", props)
 
 
   useEffect(() => {
@@ -23,7 +22,9 @@ const Card = (props) => {
             key={cards.id}
             question={cards.question}
             answer={cards.answer}
-            esay={cards.esay}                                                                                   
+            esay={cards.esay} 
+            medium={cards.medium}
+            hard={cards.hard}                                                                                  
           />
         ))}
       </div>
