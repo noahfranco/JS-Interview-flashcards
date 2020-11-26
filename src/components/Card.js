@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import CardFront from "./CardFront";
 import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
 import { connect } from "react-redux";
 
+class Card extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    // props is being passed down from actions
+    console.log("props from Card: ", this.props)
+  }
+ 
 
-const Card = (props) => {
-  // props is being passed down from actions
-  console.log("props: ", props)
+  componentDidMount() {
+    this.props.FlashCardsGetActions()
+  }
 
-
-  useEffect(() => {
-    props.FlashCardsGetActions()
-  }, [])
-
+render() {
   return (
     <>
       {/* Mapping thorugh object */}
@@ -20,7 +24,7 @@ const Card = (props) => {
         <div>
         <h4>JavaScript Interview Flashcard Questions</h4>
         </div>
-        {props.card.card.map((cards) => (
+        {this.props.card.card.map((cards) => (
           <CardFront
             key={cards.id}
             question={cards.question}
@@ -33,11 +37,13 @@ const Card = (props) => {
       </div>
     </>
   );
+ }
 };
 
 const actionCall = { FlashCardsGetActions }
 
 const mapStateToProps = state => {
-  return { card: state.card }}
+  return { card: state.card }
+}
 
 export default connect(mapStateToProps, actionCall)(Card);
