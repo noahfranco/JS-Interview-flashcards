@@ -17,6 +17,9 @@ const Card = (props) => {
     <>
       {/* Mapping thorugh object */}
       <div>
+        <div>
+        <h4>JavaScript Interview Flashcard Questions</h4>
+        </div>
         {props.card.card.map((cards) => (
           <CardFront
             key={cards.id}

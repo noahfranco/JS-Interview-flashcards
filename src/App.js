@@ -1,14 +1,24 @@
 import "./App.css";
 import React from "react";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
+
+// compnents for router
+import Register from "./components/Register";
 import Card from "./components/Card";
+import Login from "./components/Login";
 
 const App = () => {
 
   return (
     <div className="App">
-      <h4>JavaScript Interview Flashcard Questions</h4>
       <div>
-        <Card />
+        {/* <Switch> */}
+        <BrowserRouter>
+          <Route exact path="/" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/cards" component={Card} />
+        </BrowserRouter>
+        {/* </Switch> */}
       </div>
     </div>
   );
