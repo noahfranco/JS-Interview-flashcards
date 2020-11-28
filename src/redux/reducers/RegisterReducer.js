@@ -3,7 +3,7 @@ import {STARTFETCHINGREGISTER, FETCHINGREGISTER, FETCHINGFAILD} from "../actions
 const initilState = {
     register: [],
     isFetching: false,
-    error: "" 
+    error: "",
 }
 
 export const RegisterReducer = (state = initilState, action) => {
