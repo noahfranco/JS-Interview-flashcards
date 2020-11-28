@@ -1,17 +1,27 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, {Component} from "react";
+import { BrowserRouter, Route} from "react-router-dom";
+
+// compnents for router
+import Register from "./components/Register";
 import Card from "./components/Card";
+import Login from "./components/Login";
 
-const App = () => {
+class App extends Component {
 
-  return (
-    <div className="App">
-      <h4>JavaScript Interview Flashcard Questions</h4>
-      <div>
-        <Card />
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <BrowserRouter>
+            <Route exact path="/" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/cards" component={Card} />
+          </BrowserRouter>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default App;

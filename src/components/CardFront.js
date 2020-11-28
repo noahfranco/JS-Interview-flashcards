@@ -1,148 +1,144 @@
-import React, { useState} from "react";
+import React, {Component} from "react";
 import ReactCardFlip from "react-card-flip";
 import { Label } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
-const CardFront = (props) => {
+class CardFront extends Component {
   // props is passing the card object from Card.js component
-
-  const [isFlipped, setisFlipped] = useState(false);
-  // set difficulty-level state
-  const [esayCount, setEsayCount] = useState({esay: 0})
-  const [mediumCount, setMediumCount] = useState({medium: 0})
-  const [hardCount, setHardCount] = useState({hard: 0})
- 
-
-  console.log("Card from CardFront: ", props)
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      isFlipped: false,
+      // set difficulty-level state
+      esay: 0,
+      medium: 0,
+      hard: 0
+    }
+  }
 
   // increment the Esay state
-  const esayAddFunction = () => {
-    let addLike = esayCount.esay + 1
-    setEsayCount({
+  esayAddFunction = () => {
+    let addLike = this.state.esay + 1
+    this.setState({
       esay: addLike
     })
   }
 
-  console.log("esayCount: ", esayCount.esay)
-
-  const esaySubFunction = () => {
-    let subLike = esayCount.esay - 1
-    setEsayCount({
+  esaySubFunction = () => {
+    let subLike = this.state.esay - 1
+    this.setState({
       esay: subLike
     })
   }
   
   // increment the Medium state
-  const mediumAddFunction = () => {
-    let mediumClick = mediumCount.medium + 1
-    setMediumCount({
+  mediumAddFunction = () => {
+    let mediumClick = this.state.medium + 1
+    this.setState({
       medium: mediumClick
     })
   }
 
-  console.log("mediumCount: ", mediumCount)
-
-  const mediumSubFunction = () => {
-    let mediumClick = mediumCount.medium - 1
-    setMediumCount({
+  mediumSubFunction = () => {
+    let mediumClick = this.state.medium - 1
+    this.setState({
       medium: mediumClick
     })
   }
 
   // increment the Hard state
-  const hardAddFunction = () => {
-    let hardClick = hardCount.hard + 1
-    setHardCount({
+  hardAddFunction = () => {
+    let hardClick = this.state.hard + 1
+    this.setState({
       hard: hardClick
     })
   }
 
-  console.log("mediumCount: ", mediumCount)
-
-  const hardSubFunction = () => {
-    let hardClick = hardCount.hard - 1
-    setHardCount({
+  hardSubFunction = () => {
+    let hardClick = this.state.hard - 1
+    this.setState({
       hard: hardClick
     })
   }
 
 
-  const handleClick = (event) => {
+  handleClick = (event) => {
     event.preventDefault();
-    setisFlipped(!isFlipped); // !flipped === true
+    this.setState((initialState) => ({isFlipped: !initialState.isFlipped})); // !flipped === true
   };
 
-  return (
-    <>
-      <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-        {/* Front of Card */}
-        <div className="card">
-          <p> {props.question} </p>
-          <button onClick={(e) => handleClick(e)}> answer </button>
-          {/* difficulty Level Votes */}
-          <div className="addMargin">
-          <div className="addMargin">
-            { mediumCount.medium === 1 || hardCount.hard === 1 ?
-             // esay label tag is unclickable since other state is alrady filled 
-            <Label as='a' color='teal'>
-            Esay: {esayCount.esay}
-          </Label> : ( esayCount.esay === 0 ?
-          // if above is ture then execute below
-          <Label onClick={(event) => esayAddFunction(event)} as='a' color='teal'>
-          Esay: {esayCount.esay}
-          </Label> :
-            // subtrict one from esatCount object
-            <Label onClick={(event) => esaySubFunction(event)} as='a' color='teal'>
-            Esay: {esayCount.esay}
-          </Label>
-            ) 
-            }
-            </div> 
+  render() {
+    return (
+      <>
+        <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
+          {/* Front of Card */}
+          <div className="card">
+            <p> {this.props.question} </p>
+            <button onClick={(e) => this.handleClick(e)}> answer </button>
+            {/* difficulty Level Votes */}
             <div className="addMargin">
-            { esayCount.esay === 1 || hardCount.hard === 1 ? 
-            // medium label tag is unclickable since other state is alrady filled 
-            <Label as='a' color='yellow' tag>
-              Medium: {mediumCount.medium}
-            </Label> : (mediumCount.medium === 0 ?
+            <div className="addMargin">
+              { this.state.medium === 1 || this.state.hard === 1 ?
+               // esay label tag is unclickable since other state is alrady filled 
+              <Label as='a' color='teal'>
+              Esay: {this.state.esay}
+            </Label> : ( this.state.esay === 0 ?
             // if above is ture then execute below
-            <Label onClick={(event) => mediumAddFunction(event)} as='a' color='yellow' tag>
-            Medium: {mediumCount.medium}
-          </Label> :
-            // subtrict one from esatCount object
-            <Label onClick={(event) => mediumSubFunction(event)} as='a' color='yellow' tag>
-              Medium: {mediumCount.medium}
+            <Label onClick={(event) => this.esayAddFunction(event)} as='a' color='teal'>
+            Esay: {this.state.esay}
+            </Label> :
+              // subtrict one from esatCount object
+              <Label onClick={(event) => this.esaySubFunction(event)} as='a' color='teal'>
+              Esay: {this.state.esay}
             </Label>
-            )
-            }
-            </div> 
-            <div className="addMargin">
-            { esayCount.esay === 1 || mediumCount.medium === 1 ?
-            // medium label tag is unclickable since other state is alrady filled 
-            <Label  as='a' color='red' tag>
-              Hard: {hardCount.hard}
-            </Label> : (hardCount.hard === 0 ?
-            // if above is ture then execute below
-            <Label onClick={(event) => hardAddFunction(event)} as='a' color='red' tag>
-            Hard: {hardCount.hard}
-          </Label> : 
-            // subtrict one from esatCount object
-             <Label onClick={(event) => hardSubFunction(event)} as='a' color='red' tag>
-             Hard: {hardCount.hard}
-           </Label>
-             )
-            }
-            </div> 
+              ) 
+              }
+              </div> 
+              <div className="addMargin">
+              { this.state.esay === 1 || this.state.hard === 1 ? 
+              // medium label tag is unclickable since other state is alrady filled 
+              <Label as='a' color='yellow' tag>
+                Medium: {this.state.medium}
+              </Label> : (this.state.medium === 0 ?
+              // if above is ture then execute below
+              <Label onClick={(event) => this.mediumAddFunction(event)} as='a' color='yellow' tag>
+              Medium: {this.state.medium}
+            </Label> :
+              // subtrict one from esatCount object
+              <Label onClick={(event) => this.mediumSubFunction(event)} as='a' color='yellow' tag>
+                Medium: {this.state.medium}
+              </Label>
+              )
+              }
+              </div> 
+              <div className="addMargin">
+              { this.state.esay === 1 || this.state.medium === 1 ?
+              // medium label tag is unclickable since other state is alrady filled 
+              <Label  as='a' color='red' tag>
+                Hard: {this.state.hard}
+              </Label> : (this.state.hard === 0 ?
+              // if above is ture then execute below
+              <Label onClick={(event) => this.hardAddFunction(event)} as='a' color='red' tag>
+              Hard: {this.state.hard}
+            </Label> : 
+              // subtrict one from esatCount object
+               <Label onClick={(event) => this.hardSubFunction(event)} as='a' color='red' tag>
+               Hard: {this.state.hard}
+             </Label>
+               )
+              }
+              </div> 
+            </div>
           </div>
-        </div>
-        {/* Back of Card */}
-        <div className="card">
-          <p> {props.answer} </p>
-          <button onClick={(e) => handleClick(e)}> question </button>
-        </div>
-      </ReactCardFlip>
-    </>
-  );
+          {/* Back of Card */}
+          <div className="card">
+            <p> {this.props.answer} </p>
+            <button onClick={(e) => this.handleClick(e)}> question </button>
+          </div>
+        </ReactCardFlip>
+      </>
+    );
+  }
 };
 
 export default CardFront;
