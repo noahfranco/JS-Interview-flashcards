@@ -31,6 +31,11 @@ class Login extends Component {
         })
     }
 
+    handleSubmit = (parm) => {
+        parm.preventDefault()
+        this.props.LoginAction(this.state)
+    }
+
    render() {
        return (
            <>
@@ -38,7 +43,7 @@ class Login extends Component {
            <h3> Welcome to login </h3> 
            </div> 
            <div>
-               <form>
+               <form onSubmit={this.handleSubmit}>
                     <input 
                     placeholder="email"
                     type="email"
@@ -51,7 +56,7 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.handlePassword}
                     />
-
+                    <button onClick={this.handleSubmit}> Login </button>
                </form> 
            </div>
            </>

@@ -4,7 +4,7 @@ export const FETCHINGLOGIN = "FETCHINGLOGIN";
 export const FAILDLOGIN = "FAILDLOGIN";
 
 const LoginAction = (login) => dispach => {
-    dispach({tyoe: STARTLOGIN})
+    dispach({type: STARTLOGIN})
     axios
         .post("http://localhost:3333/api/users/login", login)
         .then((loginResponse) => {
