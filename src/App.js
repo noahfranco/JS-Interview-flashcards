@@ -4,8 +4,8 @@ import { BrowserRouter, Route} from "react-router-dom";
 
 // compnents for router
 import Register from "./components/Register";
-import Card from "./components/Card";
 import Login from "./components/Login";
+import Card from "./components/Card";
 
 class App extends Component {
 

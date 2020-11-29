@@ -82,11 +82,12 @@ class Register extends Component {
        if (isValid) {
            this.props.RegisterAction(this.state)
            this.setState(initialState)
-           this.props.history.push("/cards")
+        //    this.props.history.push("/cards")
        }
     }
 
     render() {
+        console.log({initialState})
         return (
         <>
             <div>
