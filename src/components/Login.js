@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import LoginAction from "../redux/actions/LoginAction";
-import {connect} from "react-redux"
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 const initialState = {
     email: "",
@@ -34,6 +35,7 @@ class Login extends Component {
     handleSubmit = (parm) => {
         parm.preventDefault()
         this.props.LoginAction(this.state)
+        this.props.history.push("/cards")
     }
 
    render() {
@@ -58,6 +60,9 @@ class Login extends Component {
                     />
                     <button onClick={this.handleSubmit}> Login </button>
                </form> 
+               <div> 
+                <Link to="/"> don't have an account </Link>    
+               </div> 
            </div>
            </>
        )

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import RegisterAction from "../redux/actions/RegisterAction";
+import {Link} from "react-router-dom";
 
 const initialState = {
     username: "",
@@ -82,7 +83,7 @@ class Register extends Component {
        if (isValid) {
            this.props.RegisterAction(this.state)
            this.setState(initialState)
-        //    this.props.history.push("/cards")
+           this.props.history.push("/cards")
        }
     }
 
@@ -118,8 +119,11 @@ class Register extends Component {
                 onChange={this.handleChangePassword} 
                 />
                 <p> {this.state.passwordError} </p>
+                <button onClick={this.handleSubmit}> Register </button>
             </form> 
-            <button onClick={this.handleSubmit}> Register </button>
+            <div> 
+                <Link to="/login"> already have an account </Link> 
+            </div>
         </div>
         </>
         )
