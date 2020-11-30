@@ -1,11 +1,11 @@
-import axios from "axios";
+import {AxiosWithAuth} from "../../middleware/AxiosWithAuth";
 export const STARTCARD = "STARTCARD";
 export const FETCHCARD = "FETCHCARD";
 export const FAILDCARD = "FAILDCARD";
 
 const FlashCardsGetAction = () => dispatch => {
     dispatch({type:STARTCARD})
-    axios
+    AxiosWithAuth()
         .get("https://js-interview-questions.herokuapp.com/api/flashcards/get")
         .then((res) => {
             console.log({res})

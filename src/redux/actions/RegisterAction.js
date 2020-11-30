@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const STARTFETCHINGREGISTER = "STARTFETCHINGREGISTER";
 export const FETCHINGREGISTER = "FETCHINGREGISTER";
 export const FETCHINGFAILD = "FETCHINGFAILD";
@@ -10,6 +9,7 @@ const RegisterAction = (input) => dispatch => {
     .post("http://localhost:3333/api/users/register", input)
     .then((response) => {
         console.log({response})
+        localStorage.setItem("token", response.data)
         dispatch({type: FETCHINGREGISTER, payload: response.data})
     }) .catch((error) => {
         dispatch({type: FETCHINGFAILD, error: error})
