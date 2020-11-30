@@ -14,8 +14,6 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = initialState
-        
-        console.log("props form Login: ", props)
     }
     
     handleEmail = (event) => {
@@ -32,10 +30,31 @@ class Login extends Component {
         })
     }
 
+
+    loginValidation = () => {
+        let emailError = ""
+
+        if (!this.state.email.includes("@")) {
+            emailError = "wrong email or password, try again"
+            if (emailError) {
+                this.setState({emailError})
+                return false
+            }
+          }
+
+        return true
+    }
+
+
     handleSubmit = (parm) => {
         parm.preventDefault()
-        this.props.LoginAction(this.state)
-        this.props.history.push("/cards")
+        const checkValid = this.loginValidation()
+        if (checkValid) {
+            this.props.LoginAction(this.state)
+            this.setState(initialState)
+            console.log("Hit me")
+            this.props.history.push("/cards")
+        }
     }
 
    render() {
@@ -61,6 +80,7 @@ class Login extends Component {
                     <button onClick={this.handleSubmit}> Login </button>
                </form> 
                <div> 
+                <p> {this.state.emailError} </p>
                 <Link to="/"> don't have an account </Link>    
                </div> 
            </div>

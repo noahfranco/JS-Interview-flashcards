@@ -83,12 +83,11 @@ class Register extends Component {
        if (isValid) {
            this.props.RegisterAction(this.state)
            this.setState(initialState)
-           this.props.history.push("/cards")
-       }
+        }
+        this.props.history.push("/cards")
     }
 
     render() {
-        console.log({initialState})
         return (
         <>
             <div>
@@ -130,7 +129,7 @@ class Register extends Component {
     }
 }
 
-const destructRegisterAction = { RegisterAction }
+const destructRegisterAction = {RegisterAction}
 
 const mapStateToProps = (state) => {
     return {register: state.register}
