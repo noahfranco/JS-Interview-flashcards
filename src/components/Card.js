@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardFront from "./CardFront";
 import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
 
 class Card extends Component {
   constructor(props) {
@@ -24,6 +25,9 @@ render() {
         <div>
         <h4>JavaScript Interview Flashcard Questions</h4>
         </div>
+        <div> 
+        <Link to="/profile"> Profile </Link>  
+        </div> 
         {this.props.card.card.map((cards) => (
           <CardFront
             key={cards.id}

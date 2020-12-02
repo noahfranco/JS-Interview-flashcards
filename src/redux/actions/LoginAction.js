@@ -1,5 +1,4 @@
 import axios from "axios";
-import {AxiosWithAuth} from "../../middleware/AxiosWithAuth";
 export const STARTLOGIN = "STARTLOGIN";
 export const FETCHINGLOGIN = "FETCHINGLOGIN";
 export const FAILDLOGIN = "FAILDLOGIN";
@@ -11,6 +10,7 @@ const LoginAction = (login) => dispach => {
         .then((loginResponse) => {
             console.log({loginResponse})
             localStorage.setItem("token", loginResponse.data.token)
+            localStorage.setItem("id", loginResponse.data.user.id)
             dispach({type: FETCHINGLOGIN, payload: loginResponse.data})
         }) .catch((error) => {
             dispach({type: FAILDLOGIN, error: error})

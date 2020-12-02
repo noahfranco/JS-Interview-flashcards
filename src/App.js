@@ -7,6 +7,7 @@ import {PrivateRoute} from "./middleware/PrivateRoute";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Card from "./components/Card";
+import Profile from "./components/Profile";
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
             
             {/* Restricted Routes */}
             <PrivateRoute exact path="/cards" component={Card}/>
+            <PrivateRoute exact path="/profile" component={Profile} />
           </BrowserRouter>
         </div>
       </div>
