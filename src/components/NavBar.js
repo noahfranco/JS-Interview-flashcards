@@ -1,11 +1,14 @@
 import React, {Component} from "react";
 import {Input, Menu, Segment} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import FlashCardsAction from "../redux/actions/FlashCardsGetActions";
 
 class NavBar extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = null
+        console.log("props from Navbar: ", this.props)
     }
 
     render() {
@@ -31,4 +34,10 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar
+const mapStateToProps = (state) => {
+    return {
+        card: state.card
+    }
+}
+
+export default connect(mapStateToProps, {FlashCardsAction})(NavBar)
