@@ -3,7 +3,6 @@ export const STARTFETCHING = "STARTFETCHING";
 export const FETCHEDPROFILE = "FETCHEDPROFILE";
 export const FAILDFETCH = "FAILDFETCH";
 
-
 const ProfileAction = (id) => dispatch => {
     dispatch({type: STARTFETCHING})
     AxiosWithAuth()

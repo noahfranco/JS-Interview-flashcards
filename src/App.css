@@ -69,3 +69,12 @@
   background-color: #77A4D4;
   border-radius: 13px;
 }
+
+.appMainColor {
+  color: #77A4D4;
+}
+
+.searchBar {
+  border-radius: 10px;
+  border-color: lightblue;
+}

@@ -1,12 +1,19 @@
 import React, {Component} from "react";
 import {Input, Menu, Segment} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
+import "../App.css";
 
 class NavBar extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = null
     }
+
+    logOut = () => {
+        localStorage.clear()
+        alert("You are signing out")
+        window.location.reload()
+      }
 
     render() {
         return (
@@ -19,11 +26,9 @@ class NavBar extends Component {
           <Menu.Item>
             <Link to="/cards"> Cards </Link>
         </Menu.Item>
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
-          </Menu.Menu>
+        <Menu.Item>
+             <p onClick={() => this.logOut()} className="appMainColor"> Logout </p>
+        </Menu.Item>
         </Menu>
       </div>
         </>
