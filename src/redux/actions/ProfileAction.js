@@ -5,7 +5,6 @@ export const FAILDFETCH = "FAILDFETCH";
 
 
 const ProfileAction = (id) => dispatch => {
-    console.log("parms in ProfileActions: ", id)
     dispatch({type: STARTFETCHING})
     AxiosWithAuth()
     .get(`http://localhost:3333/api/users/${id}`)

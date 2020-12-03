@@ -42,12 +42,14 @@
 /* ************* */
 
 .card {
-  padding: 50px;
+  background-color: white;
+  padding: 30px;
   margin: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  border-radius: 13px;
 }
 
 .displayNone {
@@ -62,5 +64,8 @@
   flex-direction: column;
 }
 
-@media only screen and (max-width: 600px) {
+.homePage {
+  margin-top: 100px;
+  background-color: #77A4D4;
+  border-radius: 13px;
 }

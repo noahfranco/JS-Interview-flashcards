@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import ProfileAction from "../redux/actions/ProfileAction";
 import {connect} from "react-redux";
 import ProfileCard from "./ProfileCard";
+import {Link} from "react-router-dom";
+import NavBar from "./NavBar";
 
 class Profile extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-        }
         console.log("props in Profile: ", this.props)
     }
 
@@ -20,7 +20,6 @@ class Profile extends Component {
 
     render() {
         const users = this.props.user.user
-        console.log({users})
         const id = localStorage.getItem("id")
         if (!id) {
             return <p> ...loading </p>
@@ -28,6 +27,7 @@ class Profile extends Component {
         return (
             <>
             <div>
+                <NavBar />
                 <div> 
                 <h4> {"Welcome to your profile"} </h4>
                 </div>

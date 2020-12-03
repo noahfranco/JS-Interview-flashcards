@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import "../App.css";
 import CardFront from "./CardFront";
 import FlashCardsGetActions from "../redux/actions/FlashCardsGetActions"
 import { connect } from "react-redux";
 import {Link} from "react-router-dom";
+import NavBar from "./NavBar";
 
 class Card extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
     // props is being passed down from actions
     console.log("props from Card: ", this.props)
   }
@@ -20,14 +21,13 @@ class Card extends Component {
 render() {
   return (
     <>
+    <div>
+      <NavBar />
+      <h4>JavaScript Interview Flashcard Questions</h4> 
+    </div> 
+    <div className="cardBackGround"> 
       {/* Mapping thorugh object */}
-      <div>
-        <div>
-        <h4>JavaScript Interview Flashcard Questions</h4>
-        </div>
-        <div> 
-        <Link to="/profile"> Profile </Link>  
-        </div> 
+      <div className="homePage"> 
         {this.props.card.card.map((cards) => (
           <CardFront
             key={cards.id}
@@ -38,6 +38,7 @@ render() {
             hard={cards.hard}                                                                                  
           />
         ))}
+      </div>
       </div>
     </>
   );
