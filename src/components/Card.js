@@ -37,16 +37,16 @@ render() {
     <div>
       <NavBar />
       <h4>JavaScript Interview Flashcard Questions</h4> 
-    </div> 
+    </div>
+
     <form>
-    <div> 
-    <input icon='search' 
+    <input className="searchBar" icon='search' 
       placeholder='Search...' 
       value={this.state.search}
       onChange={this.handleSearch} 
       />
-    </div>
     </form>
+
     <div className="cardBackGround"> 
       {/* Mapping thorugh object */}
       <div className="homePage"> 

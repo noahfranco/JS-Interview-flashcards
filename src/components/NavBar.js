@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Input, Menu, Segment} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
+import "../App.css";
 
 class NavBar extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class NavBar extends Component {
             <Link to="/cards"> Cards </Link>
         </Menu.Item>
         <Menu.Item>
-             <p onClick={() => this.logOut()}> Logout </p>
+             <p onClick={() => this.logOut()} className="appMainColor"> Logout </p>
         </Menu.Item>
         </Menu>
       </div>
